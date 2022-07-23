@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { useMovieStore } from 'src/stores/Movies';
+import { useMovieStore } from 'src/stores/Movie';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
