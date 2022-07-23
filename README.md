@@ -2,17 +2,17 @@
 
 # Netflix clone
 
-Netflix clone using Quasar and Pinia
+A Netflix clone with Quasar Framework
 
 ## Install the dependencies
 
 ```bash
 yarn
 # or
-npm install
+npm i
 ```
 
-### Start the app in development mode
+### Start the app in development mode with json-server
 
 ```bash
 npm run dev

@@ -1,8 +1,8 @@
 {
-  "name": "quasar-vite-template",
+  "name": "netflix-clone",
   "version": "0.0.1",
-  "description": "A Quasar Application template",
-  "productName": "Quasar Vite Template",
+  "description": "A Netflix clone with Quasar Framework",
+  "productName": "Netflix clone",
   "author": "Aleksa Radosavljevic <radosavljevic.aleksa2@gmail.com>",
   "private": true,
   "scripts": {
