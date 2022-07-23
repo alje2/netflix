@@ -6,7 +6,7 @@
   "author": "Aleksa Radosavljevic <radosavljevic.aleksa2@gmail.com>",
   "private": true,
   "scripts": {
-    "server": "json-server --watch db.json",
+    "dev": "concurrently \"quasar dev\" \"json-server --watch db.json\"",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0"
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@quasar/app-vite": "^1.0.0",
     "autoprefixer": "^10.4.2",
+    "concurrently": "^7.3.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.0.0",
