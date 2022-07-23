@@ -1,6 +1,7 @@
-# Quasar App (quasar-project)
+[![CodeQL](https://github.com/alje2/netflix/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/alje2/netflix/actions/workflows/codeql-analysis.yml)
+# Netflix clone
 
-A Quasar Project
+Netflix clone using Quasar and Pinia
 
 ## Install the dependencies
 ```bash
@@ -9,11 +10,15 @@ yarn
 npm install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Start the app in development mode
 ```bash
 quasar dev
 ```
 
+### Start the json-server
+```bash
+npm run server
+```
 
 ### Lint the files
 ```bash
