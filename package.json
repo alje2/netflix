@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"quasar dev\" \"json-server --watch db.json\"",
-    "build": "quasar build",
+    "build": "npx quasar build",
     "start": "node server.js",
     "heroku-postbuild": "npm i && npm run build",
     "lint": "eslint --ext .js,.vue ./",
