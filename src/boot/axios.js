@@ -8,7 +8,7 @@ import axios from 'axios';
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: `http://localhost:${process.env.PORT || 3000}`,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
