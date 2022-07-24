@@ -7,8 +7,11 @@ import axios from 'axios';
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
+const production = 'https://q-netflix-clone.herokuapp.com';
+const development = 'http://localhost:3000/';
+const url = process.env.NODE_ENV ? production : development;
 const api = axios.create({
-  baseURL: `http://localhost:${process.env.PORT || 3000}`,
+  baseURL: url,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
