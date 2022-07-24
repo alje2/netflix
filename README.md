@@ -1,41 +1,45 @@
-# Quasar App (quasar-project)
+[![CodeQL](https://github.com/alje2/netflix/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/alje2/netflix/actions/workflows/codeql-analysis.yml)
 
-A Quasar Project
+# Netflix clone
+
+A Netflix clone with Quasar Framework
 
 ## Install the dependencies
+
 ```bash
 yarn
 # or
-npm install
+npm i
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Start the app in development mode with json-server
+
 ```bash
-quasar dev
+npm run dev
 ```
-
 
 ### Lint the files
+
 ```bash
 yarn lint
 # or
 npm run lint
 ```
 
-
 ### Format the files
+
 ```bash
 yarn format
 # or
 npm run format
 ```
 
-
-
 ### Build the app for production
+
 ```bash
 quasar build
 ```
 
 ### Customize the configuration
+
 See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
