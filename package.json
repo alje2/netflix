@@ -9,7 +9,7 @@
     "dev": "concurrently \"quasar dev\" \"json-server --watch db.json\"",
     "build": "npx quasar build",
     "start": "node server.js",
-    "heroku-postbuild": "npm i -g @quasar/cli && npm i && npm run build",
+    "heroku-postbuild": "yarn && yarn build",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0"
