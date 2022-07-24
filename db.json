@@ -1,6 +1,7 @@
 {
   "users": [
     {
+      "number": "060123",
       "email": "user@gmail.com",
       "password": "1234"
     }

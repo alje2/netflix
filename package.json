@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"quasar dev\" \"json-server --watch db.json\"",
+    "heroku-postbuild": "yarn && yarn build",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0"
@@ -14,9 +15,12 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.27.2",
+    "connect-history-api-fallback": "^2.0.0",
+    "express": "^4.18.1",
     "json-server": "^0.17.0",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
+    "serve-static": "^1.15.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0"
   },
