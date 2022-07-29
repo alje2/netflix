@@ -30,7 +30,7 @@
                 :placeholder="userPlaceholder"
                 color="n-orange"
                 v-model="email"
-                type="email"
+                type="text"
                 label="Email"
                 lazy-rules
                 :rules="[
