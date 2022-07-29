@@ -36,7 +36,12 @@ export default route(function ({ store }) {
 
   Router.beforeEach((to) => {
     const authStore = useAuthStore();
-    const isLoggedIn = authStore.isLoggedIn;
+    const sessionUser = JSON.parse(sessionStorage.getItem('user'));
+    if (sessionUser?.email) {
+      authStore.user = sessionUser;
+      authStore.isLoggedIn = true;
+    }
+    const isLoggedIn = authStore.isLoggedIn || sessionUser;
     if (to.meta.requiresAuth && !isLoggedIn) return '/login';
     if (to.name === 'Login' && isLoggedIn) return false;
   });

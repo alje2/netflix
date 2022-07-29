@@ -6,7 +6,10 @@
   "author": "Aleksa Radosavljevic <radosavljevic.aleksa2@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"quasar dev\" \"json-server --watch db.json\"",
+    "dev": "concurrently \"quasar dev\" \"nodemon server.js\"",
+    "build": "npx quasar build",
+    "start": "node server.js",
+    "heroku-postbuild": "yarn && yarn build",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0"
@@ -27,6 +30,7 @@
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.0.0",
+    "nodemon": "^2.0.19",
     "prettier": "^2.5.1"
   },
   "engines": {

@@ -21,13 +21,13 @@
                 <q-item-label>{{ authStore.error }}</q-item-label>
               </q-item-section>
             </q-item>
-            <q-form @submit="login">
+            <q-form @submit="login(false, $event)">
               <q-input
                 class="q-mb-sm"
                 input-class="rounded"
                 bg-color="n-grey"
                 label-color="white"
-                placeholder="user@gmail.com"
+                :placeholder="userPlaceholder"
                 color="n-orange"
                 v-model="email"
                 type="email"
@@ -42,7 +42,7 @@
                 input-class="rounded"
                 bg-color="n-grey"
                 label-color="white"
-                placeholder="1234"
+                :placeholder="passwordPlaceholder"
                 color="n-orange"
                 v-model="password"
                 type="password"
@@ -65,7 +65,12 @@
                 class="full-width q-my-md"
               />
             </q-form>
-            <div>New to Netflix? Sign up now.</div>
+            <q-item class="items-center q-pl-xs">
+              New to Netflix?
+              <span class="q-ml-xs link" @click="login(true, $event)"
+                >Sign up now</span
+              >
+            </q-item>
           </q-card>
         </div>
       </q-page>
@@ -83,22 +88,31 @@ export default defineComponent({
     const email = ref('');
     const password = ref('');
     const authStore = useAuthStore();
+    const userPlaceholder = ref('user@gmail.com');
+    const passwordPlaceholder = ref('1234');
 
     return {
       authStore,
       email,
       password,
+      userPlaceholder,
+      passwordPlaceholder,
     };
   },
   methods: {
-    login() {
+    login(fakeLogin, event) {
       const data = {
-        email: this.email,
-        password: this.password,
+        email: fakeLogin ? this.userPlaceholder : this.email,
+        password: fakeLogin ? this.passwordPlaceholder : this.password,
       };
-      this.authStore.login(data).then((response) => {
-        if (this.authStore.isLoggedIn) this.$router.push({ name: 'Home' });
-      });
+      this.authStore
+        .login(data)
+        .then((response) => {
+          if (this.authStore.isLoggedIn) this.$router.push({ name: 'Home' });
+        })
+        .catch((error) => {
+          // handle error
+        });
     },
   },
 });

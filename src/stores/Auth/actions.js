@@ -7,18 +7,15 @@ export default {
     return auth
       .login(data)
       .then((response) => {
-        if (response.data.length) {
-          this.user = response.data[0];
-          this.isLoggedIn = true;
-        } else this.error = 'Incorrect credentials. Please try again.';
+        this.user = response.data[0];
+        sessionStorage.setItem('user', JSON.stringify(this.user));
+        this.isLoggedIn = true;
         return response.data;
       })
       .catch((error) => {
-        this.router.push({
-          name: 'Error',
-          params: { error: error },
-        });
-        // throw error;
+        this.error = 'Incorrect credentials. Please try again.';
+        // this.error = error.response.data.error;
+        throw error;
       })
       .finally(() => {
         this.loading = false;
