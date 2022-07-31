@@ -11,12 +11,14 @@
         <q-item-label caption lines="2">{{ movie.description }}</q-item-label>
       </q-item-section>
     </q-item>
+    <user-pin />
   </q-page>
 </template>
 
 <script>
 import { useMovieStore } from 'src/stores/Movie';
 import { defineComponent } from 'vue';
+import UserPin from 'components/UserPin.vue';
 
 export default defineComponent({
   name: 'MoviesPage',
@@ -25,6 +27,9 @@ export default defineComponent({
     return {
       movieStore,
     };
+  },
+  components: {
+    UserPin,
   },
   created() {
     this.movieStore.fetchMovies();
