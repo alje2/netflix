@@ -15,7 +15,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.15.1",
     "axios": "^0.27.2",
     "json-server": "^0.17.0",
     "pinia": "^2.0.17",
