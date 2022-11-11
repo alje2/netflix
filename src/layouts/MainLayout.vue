@@ -19,8 +19,12 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container class="bg-dark">
-      <router-view />
+    <q-page-container class="bg-dark overflow-hidden">
+      <router-view v-slot="{ Component, route }">
+        <transition name="fade-in" mode="out-in">
+          <component :is="Component" :key="route.path" />
+        </transition>
+      </router-view>
     </q-page-container>
   </q-layout>
 </template>
@@ -36,4 +40,17 @@ export default defineComponent({
 <style lang="sass">
 .github
   transform: translateX(25px)
+
+.fade-in-enter-active
+  transition: all .3s ease-out
+.fade-in-leave-active
+  transition: all .1s ease-out
+
+.fade-in-enter-from
+  opacity: 0
+  transform: scale(0)
+
+.fade-in-leave-to
+  opacity: 0
+  transform: scale(1)
 </style>
