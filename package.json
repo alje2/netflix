@@ -12,6 +12,7 @@
     "heroku-postbuild": "yarn && yarn build",
     "lint": "eslint --ext .js,.vue ./",
     "format": "prettier --write \"**/*.{js,vue,html,md,json}\" --ignore-path .gitignore",
+    "generate-icons": "fantasticon src/icons/svg -o src/css --normalize -t woff woff2 -g css",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.7.0",
+    "fantasticon": "^1.2.3",
     "nodemon": "^2.0.19",
     "prettier": "^2.5.1"
   },
