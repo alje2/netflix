@@ -3,18 +3,18 @@
     <div class="flex row no-wrap">
       <div v-for="(num, index) in pin" :key="`num-${index}-input`">
         <input
-          v-if="!loading"
           type="password"
           class="pin-input q-ma-sm"
           v-model="pin[index]"
           :id="`pin-input-${index}`"
-          :autofocus="1 === Number(index)"
+          :autofocus="0 === index"
           :ref="`num-${index}-input`"
-          @input="(event) => valueChange(event.target.value, Number(index))"
+          @input="(event) => valueChange(event.target.value, index)"
           @paste.prevent
-          @keyup.delete="remove(Number(index))"
+          @keyup.delete="remove(index)"
           @click="(e) => e.target.select()"
           maxlength="1"
+          autocomplete="off"
         />
       </div>
     </div>
@@ -24,23 +24,18 @@
     >
       Your PIN must be 4 numbers
     </div>
-    <q-spinner-gears
-      v-if="loading"
-      color="primary"
-      size="3rem"
-      :thickness="5"
-    />
   </div>
 </template>
 
 <script>
+import { useQuasar } from 'quasar';
 import { ref } from 'vue';
 
 export default {
   setup() {
     return {
-      pin: ref({ 1: '', 2: '', 3: '', 4: '' }),
-      loading: ref(false),
+      q: useQuasar(),
+      pin: ref(new Array(4).fill('')),
       notANum: ref(false),
     };
   },
@@ -51,65 +46,64 @@ export default {
     window.addEventListener('paste', this.paste);
   },
   computed: {
-    pinLength() {
-      return Object.keys(this.pin).length;
+    isNumbers() {
+      return new RegExp(/^\d+$/);
     },
-    numReg() {
+    isNumber() {
       return new RegExp(/\d{1}/);
     },
     isValidPin() {
-      const pin = Object.values(this.pin).join('');
-      return /^\d+$/.test(pin) && pin.length === this.pinLength;
+      const pin = this.pin.join('');
+      return this.isNumbers.test(pin) && pin.length === this.pin.length;
     },
   },
   methods: {
-    isValidInput(value) {
-      return /\d{1}/.test(value);
-    },
     paste(e) {
       e.preventDefault();
       const cliboardData = e.clipboardData || window.clipboardData;
       const clipboard = cliboardData.getData('text');
-      if (!/^\d+$/.test(clipboard)) return;
+      if (!this.isNumbers.test(clipboard)) {
+        this.notANum = true;
+        return;
+      }
       const numbers = clipboard.split('');
       const startFrom =
-        Number((document?.activeElement?.id).replace('pin-input-', '')) || 1;
-      for (let i = 0; i < this.pinLength; i++) {
-        const toUpdate = startFrom + i;
-        if (toUpdate > this.pinLength) break;
-        this.pin[toUpdate] = numbers[i];
+        Number(document?.activeElement?.id?.replace('pin-input-', '')) || 0;
+      for (let i = startFrom; i < this.pin.length; i++) {
+        this.pin[i] = numbers[i - startFrom];
       }
-      if (this.isValidPin) this.validatePin();
+      this.validatePin();
     },
     valueChange(value, index) {
       if (this.pin[index] === '') return;
       this.notANum = false;
-      if (!this.numReg.test(value)) {
+      if (!this.isNumber.test(value)) {
         this.pin[index] = '';
         this.notANum = true;
         return;
       }
-      if (this.isValidPin) {
-        this.validatePin();
-        return;
-      }
       this.select(index + 1);
+      this.validatePin();
     },
     select(index) {
-      if (index < 1 || index > this.pinLength) return;
+      if (index < 0 || index >= this.pin.length) return;
       const refName = `num-${index}-input`;
       this.$refs[refName][0].focus();
       this.$refs[refName][0].select();
     },
     remove(index) {
-      if (this.pin[Number(index)] === '') this.select(index - 1);
-      else this.pin[Number(index)] = '';
+      if (this.pin[index] === '') this.select(index - 1);
+      else this.pin[index] = '';
     },
     validatePin() {
-      const result = Object.values(this.pin).join('');
-      // validate result
-      console.log(result);
-      this.loading = true;
+      if (!this.isValidPin) return;
+      document.activeElement.blur();
+      // const result = this.pin.join('');
+      this.q.loading.show();
+      setTimeout(() => {
+        this.q.loading.hide();
+        this.$router.push({ name: 'Movies' });
+      }, 1000);
     },
   },
 };
@@ -126,6 +120,7 @@ export default {
   background: none
   text-align: center
   transition: all .2s ease-in-out
+  border-radius: 2px
   &:focus
     outline: 1px solid #fff
     transform: scale(1.1)
