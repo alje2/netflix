@@ -1,5 +1,11 @@
 // app global css in Sass form
 @import './custom-colors'
+@import './fonts/fonts'
+
+* 
+  font-family: "Poppins", "Open Sans", "Helvetica Neue", Helvetica, Arial
+  font-display: swap
+  
 .title
   font-size: 32px
   font-weight: 700
@@ -12,3 +18,9 @@ input
 .q-field__control
   border-radius: 4px !important
   padding: 0 10px
+
+.link
+  cursor: pointer
+  text-decoration: underline
+  &:hover
+    color: $primary

@@ -8,8 +8,8 @@ import axios from 'axios';
 // "export default () => {}" function below (which runs individually
 // for each client)
 const production = 'https://q-netflix-clone.herokuapp.com';
-const development = 'http://localhost:3000/';
-const url = process.env.NODE_ENV ? production : development;
+let url = 'http://localhost:3000/';
+if (!process.env.NODE_ENV) url = production;
 const api = axios.create({
   baseURL: url,
   withCredentials: false,

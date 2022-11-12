@@ -2,7 +2,7 @@
 
 # Netflix clone
 
-A Netflix clone with Quasar Framework
+A Netflix clone with Quasar Framework [demo wip](https://q-netflix-clone.herokuapp.com)
 
 ## Install the dependencies
 

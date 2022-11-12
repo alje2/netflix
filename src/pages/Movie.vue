@@ -24,7 +24,6 @@ export default defineComponent({
     };
   },
   mounted() {
-    console.log(this.$route.params.id);
     this.movieStore.fetchMovie(this.$route.params.id);
   },
 });
