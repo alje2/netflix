@@ -1,4 +1,5 @@
 // use https://github.com/oslllo/svg-fixer if some icons generated with generate-icons command are showing incorectly
+// oslllo-svg-fixer -s[source] -d [destination]
 export default {
   name: 'custom-icons',
   type: {

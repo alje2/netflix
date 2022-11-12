@@ -1,15 +1,14 @@
 <template>
   <q-page class="flex flex-center column">
-    <div>Hello!</div>
-    <div class="q-py-md">Welcome to the netflix clone</div>
-    <q-btn color="primary" label="Explore movies" :to="{ name: 'Movies' }" />
+    <user-profiles />
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-
+import UserProfiles from 'src/components/UserProfiles.vue';
 export default defineComponent({
   name: 'IndexPage',
+  components: { UserProfiles },
 });
 </script>
