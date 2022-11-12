@@ -8,7 +8,6 @@ router.render = (req, res) => {
   const data = res.locals.data;
   const isObject = Object.getPrototypeOf(data) === Object.prototype;
   const emptyObject = isObject && Object.keys(data).length === 0;
-  console.log(data, emptyObject, !data.length);
   // for testing purposes if no result return 500
   if (emptyObject || (!isObject && !data.length)) {
     res.status(500).jsonp({

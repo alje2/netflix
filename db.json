@@ -1,9 +1,23 @@
 {
   "users": [
     {
+      "id": 1,
       "number": "060123",
       "email": "user@gmail.com",
-      "password": "1234"
+      "password": "1234",
+      "profiles": [
+        {
+          "id": 1,
+          "name": "Locked",
+          "color": "green",
+          "lock": "1234"
+        },
+        {
+          "id": 1,
+          "name": "Unlocked",
+          "color": "orange"
+        }
+      ]
     }
   ],
   "movies": [
