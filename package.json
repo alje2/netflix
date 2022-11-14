@@ -21,7 +21,7 @@
     "json-server": "^0.17.0",
     "pinia": "^2.0.23",
     "quasar": "^2.7.7",
-    "vue": "^3.0.0",
+    "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
